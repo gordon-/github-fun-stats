@@ -30,6 +30,6 @@ After some stats are gathered, you can display the summary with:
 
 That's it! The output shows a line for every file, and the maximum percentage of
 the maximum commit count that renders that color. The second value of each
-column is the maximum number of commits compared to the total commit number.
+column shows the min and max commit number required to appear in this color..
 
 I honestly don't know if those values can be useful, this script is just a test.

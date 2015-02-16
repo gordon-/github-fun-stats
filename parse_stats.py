@@ -44,19 +44,24 @@ def main():
                                                '%Y%m%d')
                                      .strftime('%d/%m/%Y'))
             cur_color = '#d6e685'  # the first color
-            old_data = {'relative': 0.0, 'total': 0.0}
+            old_data = {'relative': 0.0, 'min': 0, 'max': 0}
+            min_commits = 0
             for data in user_stats:
                 if data['color'] != cur_color:
                     # we have a threshold!
-                    user_data.append('%d%% %d%%' % (old_data['relative'],
-                                                    old_data['total']))
+                    user_data.append('%d%% (%d-%d)' % (old_data['relative'],
+                                                       old_data['min'],
+                                                       old_data['max']))
+                    min_commits = int(data['count'])
                     cur_color = data['color']
                 old_data = {'relative': float(data['relative_percentage'])
                             * 100,
-                            'total': float(data['total_percentage']) * 100}
+                            'min': min_commits,
+                            'max': int(data['count'])}
 
-        user_data.append('%d%% %d%%' % (old_data['relative'],
-                                        old_data['total']))
+        user_data.append('%d%% (%d-%d)' % (old_data['relative'],
+                                           old_data['min'],
+                                           old_data['max']))
         table.add_row(user_data)
 
     print(table)
