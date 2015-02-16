@@ -59,11 +59,6 @@ def main(username):
             total_commits += count
 
             colors.append({'count': count, 'color': rect.attrib['fill']})
-    #         print('color: %s, count: %s, date: %s' % (rect.attrib['fill'],
-    #                                                   rect.attrib['data-count'],
-    #                                                   rect.attrib['data-date']))
-
-    # raise Exception('nope')
     # second loop, cause we now have total number of commits, and max commits
     # count
     for color_data in colors:
